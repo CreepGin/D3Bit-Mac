@@ -2,5 +2,12 @@
 bin
 obj
 
-# mstest test results
+# mstest and nunit test results
 TestResults
+test-results
+
+# MonoDevelop
+*.pidb
+*.userprefs
+
+.DS_Store
