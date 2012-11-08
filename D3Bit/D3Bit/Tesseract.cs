@@ -16,12 +16,14 @@ namespace D3Bit
 
         public static string GetTextFromBitmap(Bitmap bitmap)
         {
-            return GetTextFromBitmap(bitmap, @"nobatch " + Path.Combine("tesseract", "d3letters"));
+            string pwd = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            return GetTextFromBitmap(bitmap, @"nobatch " + Path.Combine(pwd, "tesseract", "d3letters"));
         }
 
         public static string GetTextFromBitmap(Bitmap bitmap, string extraParams)
         {
             string pwd = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            Console.WriteLine (pwd);
             bitmap.Save(Path.Combine(pwd, "tesseract", "x.png"), ImageFormat.Png);
             // FIXME: find a way a better way to call tesseract
             // $ ln -f /usr/local/bin/tesseract D3BitTest/bin/Debug/tesseract/tesseract_mac
