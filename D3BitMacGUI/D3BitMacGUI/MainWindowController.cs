@@ -131,11 +131,11 @@ namespace D3BitMacGUI
                 Func<string, string> u = System.Uri.EscapeDataString;
                 string url = String.Format ("http://d3bit.com/c/?image={0}&battletag={1}&build={2}&secret={3}&{4}&test=1",
                                             "", // u(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, TooltipPath))
-                                            bnetBattleTag.StringValue,
-                                            d3upBuild.StringValue,
+                                            u(bnetBattleTag.StringValue),
+                                            u(d3upBuild.StringValue),
                                             "", // u(Properties.Settings.Default.Secret.Trim())
                                             String.Join("&", info.Select(d => d.Key + "=" + u(d.Value))));
-                
+
                 webView.MainFrame.LoadRequest(new NSUrlRequest (new NSUrl (url)));
             }
         }
